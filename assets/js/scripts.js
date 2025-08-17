@@ -1,31 +1,30 @@
-const toggleTheme = document.getElementById("toggleTheme");
-const rootHtml = document.documentElement
-const accordionHeaders = document.querySelectorAll(".accordion__header");
-const menuLinks = document.querySelectorAll(".menu__link");
+const toggleTheme = document.getElementById("toggleTheme")
+const rootHTML = document.documentElement
+
 
 function changeTheme(){
-  const currentTheme = rootHtml.getAttribute("data-theme");
+  const currentTheme = rootHTML.getAttribute("data-theme")
 
-  currentTheme === "dark" ? rootHtml.setAttribute("data-theme", "light") : rootHtml.setAttribute("data-theme", "dark")
+  if(currentTheme === "dark") rootHTML.setAttribute("data-theme", "light")
+    else rootHTML.setAttribute("data-theme", "dark")
 
   toggleTheme.classList.toggle("bi-sun")
   toggleTheme.classList.toggle("bi-moon-stars")
+
 }
 
-toggleTheme.addEventListener("click", changeTheme);
 
-accordionHeaders.forEach(header => {
-  header.addEventListener("click", () => {
-    const accordionItem = header.parentElement;
+
+toggleTheme.addEventListener("click", changeTheme)
+
+
+const accordionHeaders = document.querySelectorAll(".accordion__header")
+
+accordionHeaders.forEach(Header => {
+  Header.addEventListener("click", () => {
+    const accordionItem = Header.parentElement;
     const accordionActive = accordionItem.classList.contains("active");
 
     accordionActive ? accordionItem.classList.remove("active") : accordionItem.classList.add("active");
-  })
-})
-
-menuLinks.forEach(item => {
-  item.addEventListener("click", () => {
-    menuLinks.forEach(i => i.classList.remove("active"));
-    item.classList.add("active");
   })
 })
